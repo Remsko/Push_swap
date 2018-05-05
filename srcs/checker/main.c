@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 12:47:55 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/05 14:27:04 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/05 15:15:05 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ t_bool number_check(char *p, size_t len)
     return (len ? FALSE : TRUE);
 }
 
-t_bool param_checker(char *p)
+t_bool param_check(char *p)
 {
     size_t  len;
     int     diff;
     t_bool  neg;
 
-    len = ft_strlen(p);
     neg = (p[0] == '-');
+    len = ft_strlen(p) - neg;
     if (number_check(p + neg, len) == FALSE)
         return (FALSE);
-    if ((len < 10 && !neg) || (len < 11 && neg))
+    if (len < 10)
         return (TRUE);
-    else if ((len > 10 && !neg) || (len > 11 && neg))
+    else if (len > 10)
         return (FALSE);
     else
     {
@@ -53,15 +53,40 @@ t_bool param_checker(char *p)
     }
 }
 
+t_bool  duplicate_check(char **av)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (av[i])
+    {
+        j = 0;
+        while (av[j])
+        {
+            if (i != j && ft_strcmp(av[i], av[j]) == 0)
+                return (FALSE);
+            ++j;
+        }
+        ++i;
+    }
+    return (TRUE);
+}
+
 int main(int ac, char **av)
 {
+    char **save;
+
+    save = av;
     if (ac > 1)
     {
         while (--ac > 0)
         {
-            if (param_checker(*(++av)) == FALSE)
+            if (param_check(*(++av)) == FALSE)
                 return (puterror());
         }
+        if (duplicate_check(save) == FALSE)
+            return (puterror());
     }
     else
         ft_putendl("Usage: ./checker + numbers");
