@@ -6,54 +6,74 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 12:47:55 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/05 15:15:05 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/05 16:09:59 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdio.h>
-#include    <unistd.h>
-#include    <stdlib.h>
-#include    <limits.h>
-#include    "../../libft/libft.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <limits.h>
+#include "../../libft/libft.h"
 
 #define MIN -2147483648
 #define MAX 2147483647
 
-int puterror()
+int puterror(int ret)
 {
     ft_putendl("Error");
-    return (-1);
+    printf("ret = %d", ret);
+    return (ret);
 }
 
 t_bool number_check(char *p, size_t len)
 {
+    char *tmp;
+
+    tmp = p;
     while (ft_isdigit((int)*p++) && len--)
         ;
+    if (len)
+    {
+        printf("number = %s", tmp);
+        printf("len = %zu", len);
+    }
     return (len ? FALSE : TRUE);
 }
 
 t_bool param_check(char *p)
 {
+    char    **split;
     size_t  len;
     int     diff;
     t_bool  neg;
 
-    neg = (p[0] == '-');
-    len = ft_strlen(p) - neg;
-    if (number_check(p + neg, len) == FALSE)
-        return (FALSE);
-    if (len < 10)
-        return (TRUE);
-    else if (len > 10)
-        return (FALSE);
-    else
+    split = ft_strsplit(p); // malloc => need to free
+    while (split++)
     {
-        diff = neg ? ft_strcmp(p, "-2147483648") : ft_strcmp(p, "2147483647");
-        return (diff <= 0 ? TRUE : FALSE);
+        neg = (*split[0] == '-');
+        len = ft_strlen((*split)) - neg;
+        if (number_check(*split + neg, len) == FALSE)
+        {
+            printf("number error");
+            return (FALSE);
+        }
+        if (len < 10)
+            return (TRUE);
+        else if (len > 10)
+        {
+            printf("len error");
+            return (FALSE);
+        }
+        else
+        {
+            diff = neg ? ft_strcmp(*split, "-2147483648") : ft_strcmp(*split, "2147483647");
+            return (diff <= 0 ? TRUE : FALSE);
+        }
     }
 }
 
-t_bool  duplicate_check(char **av)
+t_bool duplicate_check(char **av)
 {
     int i;
     int j;
@@ -75,18 +95,23 @@ t_bool  duplicate_check(char **av)
 
 int main(int ac, char **av)
 {
-    char **save;
+    char **argv;
+    int argc;
 
-    save = av;
+    argv = av;
+    argc = ac;
     if (ac > 1)
     {
         while (--ac > 0)
         {
             if (param_check(*(++av)) == FALSE)
-                return (puterror());
+                return (puterror(1));
         }
-        if (duplicate_check(save) == FALSE)
-            return (puterror());
+        if (duplicate_check(argv) == FALSE)
+        {
+            printf("dublicate\n");
+            return (puterror(-1));
+        }
     }
     else
         ft_putendl("Usage: ./checker + numbers");
