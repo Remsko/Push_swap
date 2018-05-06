@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: remsko <remsko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/06 22:21:25 by remsko           ###   ########.fr       */
+/*   Updated: 2018/05/06 22:00:03 by remsko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int     main(int argc, char **argv)
-{
-    t_env   e;
+# include "../libft/libft.h"
 
-    e.argc = argc;
-    e.argv = argv;
-    check_params(&e);
-    return (0);
-}
+# include "types.h"
+# include "proto.h"
+
+#endif

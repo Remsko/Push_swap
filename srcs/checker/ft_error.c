@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: remsko <remsko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/06 22:21:25 by remsko           ###   ########.fr       */
+/*   Created: 2018/05/06 22:31:40 by remsko            #+#    #+#             */
+/*   Updated: 2018/05/06 22:34:55 by remsko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-int     main(int argc, char **argv)
+void    ft_error(int nb)
 {
-    t_env   e;
-
-    e.argc = argc;
-    e.argv = argv;
-    check_params(&e);
-    return (0);
+    ft_putendl("Error");
+    exit(nb);
 }
