@@ -3,13 +3,13 @@ CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
 SRC_NAME = srcs/checker/main.c \
-			srcs/checker/check_params.c \
+			srcs/checker/parse_params.c \
 			srcs/checker/check_numbers.c \
 			srcs/checker/check_duplicate.c \
 			srcs/checker/stock_numbers.c \
 			srcs/checker/create_piles.c \
+			srcs/checker/pile_simplify.c \
 			srcs/checker/ft_error.c \
-
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
