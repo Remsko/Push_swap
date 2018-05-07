@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remsko <remsko@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/06 22:58:49 by remsko           ###   ########.fr       */
+/*   Updated: 2018/05/07 17:36:08 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 typedef struct  s_env
 {
     char    **argv;
-    int     argc;
     t_list  *lst;
+    int     *a;
+    int     *b;
+    int     argc;
     int     elem_nb;
 }               t_env;
 

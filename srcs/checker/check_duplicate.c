@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   check_duplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 22:31:40 by remsko            #+#    #+#             */
-/*   Updated: 2018/05/07 16:11:36 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/07 16:25:32 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/07 17:53:13 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void    ft_error(int nb)
+void	check_duplicate(t_env *e)
 {
-    ft_putstr("Error ");
-    ft_putnbr(nb);
-    ft_putchar('\n');
-    exit(nb);
+	(void)e;
 }
