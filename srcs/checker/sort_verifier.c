@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_verifier.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 17:28:29 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/10 17:28:46 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/10 17:38:35 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-int     main(int argc, char **argv)
+void	sort_verifier(t_env *e)
 {
-    t_env   e;
+	int		i;
+	t_bool	answer;
 
-    if (argc > 1)
-    {
-        e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0};
-        parse_params(&e);
-        operation_getter(&e);
-        sort_verifier(&e);
-    }
-    else
-        ft_putendl("usage: /checker + numbers");
-    return (0);
+	i = 0;
+	answer = e->b_len > 0 ? FALSE : TRUE;
+	while (i + 1 < e->elem_nb)
+	{
+		if (e->a[i] > e->a[i + 1])
+		{
+			answer = FALSE;
+			break ;
+		}
+		else
+			++i;
+	}
+	free(e->a);
+	free(e->b);
+	return (answer ? ft_putendl("OK") : ft_putendl("KO"));
 }

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:54:55 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 17:19:33 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 17:27:34 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ void	rrr(t_env *e)
 
 t_bool	do_operation(t_env *e, char *line)
 {
-	(void)e;
 	if (ft_strcmp(line, "sa") == 0)
 		sa(e);
 	else if (ft_strcmp(line, "sb") == 0)
