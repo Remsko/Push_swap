@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_verifier.c                                    :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:28:46 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 17:50:41 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/10 17:55:04 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/10 17:55:27 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	sort_verifier(t_env *e)
+void	sa(t_env *e)
 {
-	int		i;
-	t_bool	answer;
+	if (e->a_len > 1)
+		ft_swap(&e->a[0], &e->a[1]);
+}
 
-	i = 0;
-	answer = 1 - (e->b_len > 0);
-	while (i + 1 < e->elem_nb)
-	{
-		if (e->a[i] > e->a[i + 1])
-		{
-			answer = FALSE;
-			break ;
-		}
-		else
-			++i;
-	}
-	free(e->a);
-	free(e->b);
-	return (answer ? ft_putendl("OK") : ft_putendl("KO"));
+void	sb(t_env *e)
+{
+	if (e->b_len> 1)
+		ft_swap(&e->b[0], &e->b[1]);
+}
+
+void	ss(t_env *e)
+{
+	sa(e);
+	sb(e);
 }

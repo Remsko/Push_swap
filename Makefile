@@ -13,6 +13,10 @@ SRC_NAME = srcs/checker/main.c \
 			srcs/checker/operation_getter.c \
 			srcs/checker/do_operation.c \
 			srcs/checker/sort_verifier.c \
+			srcs/operations/swap.c \
+			srcs/operations/push.c \
+			srcs/operations/rotate.c \
+			srcs/operations/reverse.c \
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

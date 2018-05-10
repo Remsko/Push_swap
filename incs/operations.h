@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_verifier.c                                    :+:      :+:    :+:   */
+/*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:28:46 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 17:50:41 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/10 17:59:00 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/10 18:01:06 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#ifndef OPERATIONS_H
+# define OPERATIONS_H
 
-void	sort_verifier(t_env *e)
-{
-	int		i;
-	t_bool	answer;
+# include "push_swap.h"
 
-	i = 0;
-	answer = 1 - (e->b_len > 0);
-	while (i + 1 < e->elem_nb)
-	{
-		if (e->a[i] > e->a[i + 1])
-		{
-			answer = FALSE;
-			break ;
-		}
-		else
-			++i;
-	}
-	free(e->a);
-	free(e->b);
-	return (answer ? ft_putendl("OK") : ft_putendl("KO"));
-}
+void	sa(t_env *e);
+
+void	sb(t_env *e);
+
+void	ss(t_env *e);
+
+void	pa(t_env *e);
+
+void	pb(t_env *e);
+
+void	ra(t_env *e);
+
+void	rb(t_env *e);
+
+void	rr(t_env *e);
+
+void	rra(t_env *e);
+
+void	rrb(t_env *e);
+
+void	rrr(t_env *e);
+
+#endif
