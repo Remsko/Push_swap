@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:59:00 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:04:49 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/10 18:13:53 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/10 18:16:04 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#ifndef PARSER_H
+# define PARSER_H
 
 # include "push_swap.h"
 
-void	sa(t_env *e);
+void    parse_params(t_env *e);
 
-void	sb(t_env *e);
+void    stock_numbers(t_env *e);
 
-void	ss(t_env *e);
+void	check_numbers(t_env *e);
 
-void	pa(t_env *e);
+void	check_duplicate(t_env *e);
 
-void	pb(t_env *e);
+void	create_piles(t_env *e);
 
-void	ra(t_env *e);
-
-void	rb(t_env *e);
-
-void	rr(t_env *e);
-
-void	rra(t_env *e);
-
-void	rrb(t_env *e);
-
-void	rrr(t_env *e);
+void	pile_simplify(t_env *e);
 
 #endif

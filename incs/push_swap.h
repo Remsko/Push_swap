@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 17:59:37 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:16:29 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "types.h"
 # include "proto.h"
 # include "operations.h"
+# include "parser.h"
 # include	<stdio.h>
 
 #endif

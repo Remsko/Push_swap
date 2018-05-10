@@ -6,13 +6,13 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 18:19:35 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 15:52:15 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:18:41 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	get_next_min(t_env *e, long *previous, int nb)
+static void	next_min(t_env *e, long *previous, int nb)
 {
 	long	min;
 	int		index;
@@ -36,7 +36,7 @@ void	get_next_min(t_env *e, long *previous, int nb)
 	*previous = min;
 }
 
-void	pile_simplify(t_env *e)
+void		pile_simplify(t_env *e)
 {
 	long previous;
 	int i;
@@ -44,7 +44,7 @@ void	pile_simplify(t_env *e)
 	previous = (long)-2147483649;
 	i = 0;
 	while (i < e->elem_nb)
-		get_next_min(e, &previous, ++i);
+		next_min(e, &previous, ++i);
 	i = 0;
 	while (i < e->elem_nb)
 		e->b[i++] = 0;

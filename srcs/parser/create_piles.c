@@ -6,13 +6,13 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:16:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 15:24:48 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:17:58 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	fill_piles(int *pile_a, int *pile_b, t_env *e)
+static void	fill_piles(int *pile_a, int *pile_b, t_env *e)
 {
 	t_list	*lst;
 	char	**split;
@@ -35,7 +35,7 @@ void	fill_piles(int *pile_a, int *pile_b, t_env *e)
 	}
 }
 
-void	create_piles(t_env *e)
+void		create_piles(t_env *e)
 {
 	int	*pile_a;
 	int	*pile_b;

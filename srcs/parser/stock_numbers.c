@@ -6,20 +6,20 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 12:52:13 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/07 17:53:22 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:19:11 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void    fill_lst(t_env *e, char **split)
+static void fill_lst(t_env *e, char **split)
 {
     e->lst->content = (void *)split;
     e->lst->content_size = ft_tablen(split);
     e->elem_nb += e->lst->content_size - 1;
 }
 
-void    stock_numbers(t_env *e)
+void        stock_numbers(t_env *e)
 {
     char    **split;
     t_list  *new;

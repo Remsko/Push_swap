@@ -6,20 +6,20 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:48:11 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/07 17:53:07 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:17:43 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-t_bool ft_isstrdigit(char *p, size_t len)
+static t_bool	ft_isstrdigit(char *p, size_t len)
 {
 	while (ft_isdigit((int)*p++))
 		--len;
 	return (len ? FALSE : TRUE);
 }
 
-t_bool number_checker(char *nb)
+static t_bool	number_checker(char *nb)
 {
 	size_t  len;
 	int     diff;
@@ -40,7 +40,7 @@ t_bool number_checker(char *nb)
 	}
 }
 
-void	check_numbers(t_env *e)
+void			check_numbers(t_env *e)
 {
 	char	**split;
 	t_list	*lst;

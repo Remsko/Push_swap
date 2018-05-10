@@ -3,13 +3,13 @@ CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
 SRC_NAME = srcs/checker/main.c \
-			srcs/checker/parse_params.c \
-			srcs/checker/check_numbers.c \
-			srcs/checker/check_duplicate.c \
-			srcs/checker/stock_numbers.c \
-			srcs/checker/create_piles.c \
-			srcs/checker/pile_simplify.c \
-			srcs/checker/ft_error.c \
+			srcs/parser/parse_params.c \
+			srcs/parser/check_numbers.c \
+			srcs/parser/check_duplicate.c \
+			srcs/parser/stock_numbers.c \
+			srcs/parser/create_piles.c \
+			srcs/parser/pile_simplify.c \
+			srcs/error/ft_error.c \
 			srcs/checker/operation_getter.c \
 			srcs/checker/do_operation.c \
 			srcs/checker/sort_verifier.c \

@@ -6,20 +6,20 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:33:45 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 14:16:46 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:17:09 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	cleaner(t_env *e, char *line)
+static void	cleaner(t_env *e, char *line)
 {
 	free(e->a);
 	free(e->b);
 	free(line);
 }
 
-void	operation_getter(t_env *e)
+void		operation_getter(t_env *e)
 {
 	char *line;
 
