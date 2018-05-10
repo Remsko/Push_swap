@@ -6,32 +6,46 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 18:19:35 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/07 18:29:59 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 15:52:15 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	pile_simply(t_env *e)
+void	get_next_min(t_env *e, long *previous, int nb)
 {
+	long	min;
+	int		index;
 	int		i;
-	int		j;
-	long	tmp;
 
-	tmp = 2147483648;
+	min = (long)2147483648;
+	index = 0;
 	i = 0;
 	while (i < e->elem_nb)
 	{
-		j = 0;
-		while (j < e->elem_nb)
+		if ((long)e->b[i] < min && (long)e->b[i] > *previous)
 		{
-			if (e->a[j] < tmp)
-			{
-				tmp = (long)e->a[j];
-			}
-			else
-				j++;
+			min = (long)e->b[i];
+			index = i;
+			i = 0;
 		}
-		e->b[j] = ++i;
+		else
+			++i;
 	}
+	e->a[index] = nb;
+	*previous = min;
+}
+
+void	pile_simplify(t_env *e)
+{
+	long previous;
+	int i;
+
+	previous = (long)-2147483649;
+	i = 0;
+	while (i < e->elem_nb)
+		get_next_min(e, &previous, ++i);
+	i = 0;
+	while (i < e->elem_nb)
+		e->b[i++] = 0;
 }

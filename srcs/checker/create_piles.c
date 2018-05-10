@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:16:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/07 17:59:40 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 15:24:48 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	fill_piles(int *pile_a, int *pile_b, t_env *e)
 		split = (char **)lst->content;
 		while (*split)
 		{
-			e->a[i++] = ft_atoi(*split++);
+			e->b[i++] = ft_atoi(*split++);
 			if (i == e->elem_nb)
 				return ;
 		}
@@ -51,6 +51,8 @@ void	create_piles(t_env *e)
 		free(pile_a);
 		ft_error(5);
 	}
+	e->a_len = e->elem_nb;
+	e->b_len = 0;
 	fill_piles(pile_a, pile_b, e);
 	ft_lstdel(&e->lst, ft_deltab);
 }

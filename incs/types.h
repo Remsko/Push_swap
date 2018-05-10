@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/07 17:36:08 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 15:25:12 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct  s_env
     int     *b;
     int     argc;
     int     elem_nb;
+    int     a_len;
+    int     b_len;
 }               t_env;
 
 #endif

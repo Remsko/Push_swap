@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicate.c                                  :+:      :+:    :+:   */
+/*   operation_getter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 16:25:32 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 11:11:42 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/10 13:33:45 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/10 14:16:46 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	check_duplicate(t_env *e)
+void	cleaner(t_env *e, char *line)
 {
-	int	i;
-	int j;
+	free(e->a);
+	free(e->b);
+	free(line);
+}
 
-	i = 0;
-	while (i < e->elem_nb)
+void	operation_getter(t_env *e)
+{
+	char *line;
+
+	line = NULL;
+	while (get_next_line(0, &line) > 0)
 	{
-		j = 0;
-		while (j < e->elem_nb)
+		if (do_operation(e, line) == FALSE)
 		{
-			if (j != i && e->b[i] == e->b[j]) 
-			{
-				free(e->a);
-				free(e->b);
-				ft_error(6);
-			}
-			j++;
+			cleaner(e, line);
+			ft_error(8);
 		}
-		i++;
+		else
+			free(line);
 	}
 }

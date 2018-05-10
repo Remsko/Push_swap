@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/07 18:16:49 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 12:32:33 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int     main(int argc, char **argv)
     {
         e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0};
         parse_params(&e);
+        operation_getter(&e);
     }
     else
         ft_putendl("usage: /checker + numbers");
