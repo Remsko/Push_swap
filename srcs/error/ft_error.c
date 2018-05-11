@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:31:40 by remsko            #+#    #+#             */
-/*   Updated: 2018/05/07 16:11:36 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:37:52 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    ft_error(int nb)
 {
-    ft_putstr("Error ");
+    ft_putendl("Error");
     ft_putnbr(nb);
     ft_putchar('\n');
     exit(nb);

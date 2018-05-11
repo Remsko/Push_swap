@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   proto.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/11 14:11:56 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/11 14:17:40 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTO_H
-# define PROTO_H
+#include "../../incs/push_swap.h"
 
-# include "push_swap.h"
+int     main(int argc, char **argv)
+{
+    t_env   e;
 
-void    ft_error(int nb);
-
-void	operation_getter(t_env *e);
-
-t_bool	do_operation(t_env *e, char *line);
-
-void	sort_verifier(t_env *e);
-
-void	operations_algo(t_env *e);
-
-#endif
+    if (argc > 1)
+    {
+        e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
+                    .b_len = 0, .lst = NULL, .a = NULL, .b = NULL};
+        parse_params(&e);
+		operations_algo(&e);
+    }
+    else
+        ft_putendl("usage: ./push_swap + integer argument(s)");
+    return (0);
+}

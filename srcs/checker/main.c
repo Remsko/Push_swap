@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:09:52 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/11 14:52:55 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ int     main(int argc, char **argv)
 
     if (argc > 1)
     {
-        e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
-                    .b_len = 0, .lst = NULL, .a = NULL, .b = NULL};
+        e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .op_nb = 0,
+        .a_len = 0, .b_len = 0, .lst = NULL, .a = NULL, .b = NULL};
         parse_params(&e);
         operation_getter(&e);
         sort_verifier(&e);
+        ft_putnbr(e.op_nb);
     }
     else
         ft_putendl("usage: ./checker + integer argument(s)");

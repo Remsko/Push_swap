@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:33:45 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:17:09 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/11 14:13:22 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ void		operation_getter(t_env *e)
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
+		printf("line = %s\n", line);
 		if (do_operation(e, line) == FALSE)
 		{
 			cleaner(e, line);
 			ft_error(8);
 		}
 		else
+		{
+			++e->op_nb;
 			free(line);
+		}
 	}
 }

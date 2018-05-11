@@ -1,9 +1,9 @@
 NAME = checker
+NAME2 = push_swap
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
-SRC_NAME = srcs/checker/main.c \
-			srcs/parser/parse_params.c \
+SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/parser/check_numbers.c \
 			srcs/parser/check_duplicate.c \
 			srcs/parser/stock_numbers.c \
@@ -17,8 +17,15 @@ SRC_NAME = srcs/checker/main.c \
 			srcs/operations/push.c \
 			srcs/operations/rotate.c \
 			srcs/operations/reverse.c \
+			srcs/push_swap/operations_algo.c \
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC_1 = srcs/checker/main.c \
+
+SRC_2 = srcs/push_swap/main.c \
+
+OBJ_ALL = $(SRC_ALL:.c=.o)
+OBJ_1 = $(SRC_1:.c=.o)
+OBJ_2 = $(SRC_2:.c=.o)
 
 LDLIBS = -Llibft
 
@@ -29,20 +36,22 @@ CPPFLAGS = -I./incs \
 
 all: $(NAME)
 
-$(NAME): $(OBJ_NAME)
+$(NAME): $(OBJ_ALL) $(OBJ_1) $(OBJ_2)
 	@make -C libft
-	@$(CC) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	@$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ_ALL) $(OBJ_1) -o $(NAME)
 	@echo $(NAME) "\x1b[32m✔\x1b[0m"
+	@$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ_ALL) $(OBJ_2) -o $(NAME2)
+	@echo $(NAME2) "\x1b[32m✔\x1b[0m"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	@make clean -C libft
-	@$(RM) $(OBJ_NAME)
+	@$(RM) $(OBJ_ALL) $(OBJ_1) $(OBJ_2)
 
 fclean: clean
 	@make fclean -C libft
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(NAME2)
 
 re: fclean all
