@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 18:13:53 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:16:04 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/11 15:23:03 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "push_swap.h"
 
-void    parse_params(t_env *e);
+void	parse_params(t_env *e);
 
-void    stock_numbers(t_env *e);
+void	stock_numbers(t_env *e);
 
 void	check_numbers(t_env *e);
 
