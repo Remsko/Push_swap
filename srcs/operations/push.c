@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:53:50 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:01:13 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/13 15:50:17 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	pa(t_env *e)
 {
 	int i;
 
+	if (e->print == TRUE)
+		ft_putendl("pa");
 	i = e->a_len;
 	if (e->b_len > 0)
 	{
@@ -40,6 +42,8 @@ void	pb(t_env *e)
 {
 	int i;
 
+	if (e->print == TRUE)
+		ft_putendl("pb");
 	i = e->b_len;
 	if (e->a_len > 0)
 	{

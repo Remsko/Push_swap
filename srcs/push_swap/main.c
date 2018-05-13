@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/11 14:17:40 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/13 16:02:08 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int     main(int argc, char **argv)
     if (argc > 1)
     {
         e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
-                    .b_len = 0, .lst = NULL, .a = NULL, .b = NULL};
+                    .b_len = 0, .print = TRUE, .lst = NULL, .a = NULL, .b = NULL};
         parse_params(&e);
 		operations_algo(&e);
     }

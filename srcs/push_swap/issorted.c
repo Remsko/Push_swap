@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   issorted.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/13 15:47:07 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/13 12:20:46 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/13 12:21:00 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "../../incs/push_swap.h"
 
-# include "push_swap.h"
-
-typedef struct  s_env
+t_bool	issorted(t_env *e)
 {
-    char    **argv;
-    t_list  *lst;
-    int     *a;
-    int     *b;
-    int     argc;
-    int     elem_nb;
-    int     op_nb;
-    int     a_len;
-    int     b_len;
-    t_bool  print;
-}               t_env;
+	int		i;
+	t_bool	answer;
 
-#endif
+	i = 0;
+	answer = 1 - (e->b_len > 0);
+	while (i + 1 < e->elem_nb)
+	{
+		if (e->a[i] > e->a[i + 1])
+		{
+			answer = FALSE;
+			break ;
+		}
+		else
+			++i;
+	}
+	if (answer == TRUE)
+	{
+		free(e->a);
+		free(e->b);
+		return (TRUE);
+	}
+	else
+		return (FALSE);
+}

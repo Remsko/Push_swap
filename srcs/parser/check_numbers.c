@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:48:11 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:17:43 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/13 18:25:29 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static t_bool	number_checker(char *nb)
 	t_bool  neg;
 
 	neg = (nb[0] == '-');
+	if (neg && ft_isdigit((int)nb[1]) == 0)
+		ft_error(9);
 	len = ft_strlen((nb)) - neg;
 	if (ft_isstrdigit(nb + neg, len) == FALSE)
 		return (FALSE);

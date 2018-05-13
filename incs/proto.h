@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/11 14:11:56 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/13 19:10:54 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ t_bool	do_operation(t_env *e, char *line);
 void	sort_verifier(t_env *e);
 
 void	operations_algo(t_env *e);
+
+t_bool	issorted(t_env *e);
 
 #endif
