@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_verifier.c                                    :+:      :+:    :+:   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 17:28:46 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/15 21:49:48 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/05/15 21:59:41 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void	sort_verifier(t_env *e)
+void	recursive_quicksort(t_env *e)
 {
-	int		i;
-	t_bool	answer;
+	int pivot;
+	int op_nb;
 
-	i = 0;
-	answer = TRUE;
-	if (e->b_len > 0)
-		answer = FALSE;
-	while (i + 1 < e->elem_nb)
+	pivot = e->elem_nb - e->a_len / 2;
+	op_nb = 0;
+	while (op_nb < e->a_len)
 	{
-		if (e->a[i] > e->a[i + 1])
-		{
-			answer = FALSE;
-			break ;
-		}
+		if (e->a[0] <= pivot)
+			pb(e);
 		else
-			++i;
+			ra(e);
+		++op_nb;
 	}
-	free(e->a);
-	free(e->b);
-	return (answer ? ft_putendl("OK") : ft_putendl("KO"));
+	if (pivot >= e->elem_nb)
+		return ;
+	return (recursive_quicksort(e));
+}
+
+void	quicksort(t_env *e)
+{
+	if (issorted(e) == TRUE)
+		return ;
+	recursive_quicksort(e);
 }

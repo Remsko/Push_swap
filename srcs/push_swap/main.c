@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/13 16:02:08 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/15 21:44:34 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int     main(int argc, char **argv)
         e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
                     .b_len = 0, .print = TRUE, .lst = NULL, .a = NULL, .b = NULL};
         parse_params(&e);
-		operations_algo(&e);
+		//operations_algo(&e);
+        quicksort(&e);
     }
     else
         ft_putendl("usage: ./push_swap + integer argument(s)");
