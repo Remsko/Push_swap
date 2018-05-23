@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/21 17:42:38 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/23 15:42:46 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	operations_algo(t_env *e);
 
 t_bool	issorted(t_env *e);
 
-void	recursive_quicksort(t_env *e, int len, char pile);
+void	recursive_quicksort(t_env *e, int len, char pile, int turn);
+
+void	instant_sort(t_env *e, int len, char pile);
 
 #endif

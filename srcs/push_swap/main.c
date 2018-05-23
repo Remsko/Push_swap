@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/21 17:41:55 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/23 16:44:09 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int     main(int argc, char **argv)
         e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
                     .b_len = 0, .print = TRUE, .lst = NULL, .a = NULL, .b = NULL};
         parse_params(&e);
-        recursive_quicksort(&e, e.elem_nb, 'a');
+        if (e.elem_nb <= 3)
+            instant_sort(&e, e.elem_nb, 'a');
+        else
+            recursive_quicksort(&e, e.elem_nb, 'a', 2);
     }
     else
         ft_putendl("usage: ./push_swap + integer argument(s)");
