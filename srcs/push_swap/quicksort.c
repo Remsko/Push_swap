@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/23 17:24:34 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/05/23 19:03:59 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@
 #define PILE_REVERSE (pile == 'a' ? 'b' : 'a')
 #define PILE_FIRST (pile == 'a' ? e->a[0] : e->b[0])
 
-int		quicksort_to(t_env *e, char pile, int pivot)
+int		quicksort_to(t_env *e, char pile, int op_nb, int pivot)
 {
-	if (PILE_FIRST <= pivot)
+	int pushed;
+
+	pushed = 0;
+	while (op_nb--)
 	{
-		pile == 'a' ? pb(e) : pa(e);
-		return (1);
+		if (PILE_FIRST <= pivot)
+		{
+			pile == 'a' ? pb(e) : pa(e);
+			++pushed;
+		}
+		else
+			pile == 'a' ? ra(e) : rb(e);
 	}
-	else
-		pile == 'a' ? ra(e) : rb(e);
-	return (0); 
+	return (pushed); 
 }
 
 int		get_median(int *actual, int len)
@@ -85,25 +91,19 @@ void	recursive_quicksort(t_env *e, int len, char pile, int turn)
 {
 	int pivot;
 	int pushed;
-	int reset;
+	int tmp;
 
-	if (issorted(e) == TRUE)
+	if (issorted(e) == TRUE || len <= 0 || e == NULL)
 		return ;
-	pushed = 0;
-	reset = 0;
 	pivot = get_median(PILE_CHOSE, len);
-	while (len > 3 && pushed < (len / 2) + (len % 2 && pile == 'a') && ++reset)
-		pushed += quicksort_to(e, pile, pivot);
-	while (turn == 0 && (reset--) - pushed)
-		pile == 'a' ? rra(e) : rrb(e);
-	if (pushed > 0 && pile == 'b')
-		recursive_quicksort(e, pushed, 'a', 0);
+	pushed = quicksort_to(e, pile, len, pivot);
 	if (len - pushed <= 3)
 		instant_sort(e, len - pushed, pile);
 	else
-		recursive_quicksort(e, len - pushed, pile, turn == 2 ? turn - 1 : turn);
-	if (pushed > 0 && pile == 'a')
-		recursive_quicksort(e, pushed, 'b', turn == 2 ? 1 : 0);
-	while (pushed--)
+		recursive_quicksort(e, len - pushed, pile, turn + 1);
+	tmp = pushed;
+	if (turn < 5)
+		return ;
+	while (tmp--)
 		pile == 'a' ? pa(e) : pb(e);
 }
