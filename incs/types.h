@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/03 14:13:48 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/03 16:13:34 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct  s_env
 typedef struct  s_move
 {
     int     push;
-    int     rotate;
-    struct s_move  *next;
+    int     rotation;
 }               t_move;
 
 #endif

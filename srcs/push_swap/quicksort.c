@@ -6,29 +6,11 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/03 14:59:41 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/03 18:44:36 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
-
-void	mover(t_env *e, t_move *move, int len, int pivot, char stack_id)
-{
-	while (len)
-	{
-		if ((stack_id == 'a' ? e->a[0] : e->b[0]) <= pivot)
-		{
-			stack_id == 'a' ? pb(e) : pa(e);
-			++move->push;
-		}
-		else
-		{
-			stack_id == 'a' ? ra(e) : rb(e);
-			++move->rotate;
-		}
-		--len;
-	}
-}
 
 int		median(t_env *e, int len, char stack_id)
 {
@@ -50,40 +32,14 @@ int		median(t_env *e, int len, char stack_id)
 			max = stack[index];
 		++index;
 	}
-	return ((min + max) / 2);
+	return ((min + max) / 2 + (index % 2 != 0));
 }
 
-void	new_move_link(t_move **begin)
+void	quicksort(t_env *e, int len, char stack_id)
 {
-	t_move *new;
+	int pivot;
 
-	if (*begin == NULL)
-	{
-		if ((new = (t_move*)ft_memalloc(sizeof(t_move))) == NULL)
-			return /* free properly please */;
-		*begin = new;
-	}
-	else
-	{
-		if ((new = (t_move*)ft_memalloc(sizeof(t_move))) == NULL)
-			return /* free properly please */;
-		new->next = *begin;
-		*begin = new;
-	}
-}
 
-void	quicksort(t_env *e)
-{
-	t_move	*move;
-	int		pivot;
-	char	stack_id;
+	pivot = median(e, len , stack_id);
 
-	move = NULL;
-	while (e->a_len)
-	{
-		new_move_link(&move);
-		stack_id = 'a';
-		pivot = median(e, e->a_len, stack_id);
-		mover(e, move, e->a_len, pivot, stack_id);
-	}
 }

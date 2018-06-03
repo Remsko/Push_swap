@@ -17,7 +17,6 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/operations/push.c \
 			srcs/operations/rotate.c \
 			srcs/operations/reverse.c \
-			srcs/push_swap/operations_algo.c \
 			srcs/push_swap/issorted.c \
 			srcs/push_swap/quicksort.c \
 
