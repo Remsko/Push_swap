@@ -6,104 +6,84 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/23 19:03:59 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/03 14:59:41 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-#define PILE_LEN (pile == 'a' ? e->a_len : e->b_len)
-#define PILE_CHOSE (pile == 'a' ? e->a : e->b)
-#define PILE_REVERSE (pile == 'a' ? 'b' : 'a')
-#define PILE_FIRST (pile == 'a' ? e->a[0] : e->b[0])
-
-int		quicksort_to(t_env *e, char pile, int op_nb, int pivot)
+void	mover(t_env *e, t_move *move, int len, int pivot, char stack_id)
 {
-	int pushed;
-
-	pushed = 0;
-	while (op_nb--)
+	while (len)
 	{
-		if (PILE_FIRST <= pivot)
+		if ((stack_id == 'a' ? e->a[0] : e->b[0]) <= pivot)
 		{
-			pile == 'a' ? pb(e) : pa(e);
-			++pushed;
+			stack_id == 'a' ? pb(e) : pa(e);
+			++move->push;
 		}
 		else
-			pile == 'a' ? ra(e) : rb(e);
+		{
+			stack_id == 'a' ? ra(e) : rb(e);
+			++move->rotate;
+		}
+		--len;
 	}
-	return (pushed); 
 }
 
-int		get_median(int *actual, int len)
+int		median(t_env *e, int len, char stack_id)
 {
-	int i;
-	int min;
-	int max;
+	int		*stack;
+	long	min;
+	int		max;
+	int		index;
 
+
+	stack = stack_id == 'a' ? e->a : e->b;
+	min = (long)2147483648;
 	max = 0;
-	min = 2147483647;
-	i = 0;
-	while (i < len)
+	index = 0;
+	while (index < len) 
 	{
-		min = actual[i] < min ? actual[i] : min;
-		max = actual[i] > max ? actual[i] : max;
-		i++;
+		if (stack[index] < min)
+			min = stack[index];
+		if (stack[index] > max)
+			max = stack[index];
+		++index;
 	}
 	return ((min + max) / 2);
 }
 
-t_bool	isnsorted(int *stack, int n)
+void	new_move_link(t_move **begin)
 {
-	int i;
+	t_move *new;
 
-	i = 0;
-	while (i + 1 < n)
+	if (*begin == NULL)
 	{
-		if (stack[i] > stack[i + 1])
-			return (FALSE);
-		i++;
+		if ((new = (t_move*)ft_memalloc(sizeof(t_move))) == NULL)
+			return /* free properly please */;
+		*begin = new;
 	}
-	return (TRUE);
-}
-
-void	instant_sort(t_env *e, int len, char pile)
-{
-	int *actual;
-
-	actual = pile == 'a' ? e->a : e->b;
-	if (len > 3)
-		ft_error(666);
-	while (isnsorted(actual, len) == FALSE)
-	{
-		if (isnsorted(actual, 2) == FALSE)
-				pile == 'a' ? sa(e) : sb(e);
-		else
-		{
-			pile == 'a' ? ra(e) : rb(e);
-        	pile == 'a' ? sa(e) : sb(e);
-            pile == 'a' ? rra(e) : rrb(e);
-		}
-	}
-}
-
-void	recursive_quicksort(t_env *e, int len, char pile, int turn)
-{
-	int pivot;
-	int pushed;
-	int tmp;
-
-	if (issorted(e) == TRUE || len <= 0 || e == NULL)
-		return ;
-	pivot = get_median(PILE_CHOSE, len);
-	pushed = quicksort_to(e, pile, len, pivot);
-	if (len - pushed <= 3)
-		instant_sort(e, len - pushed, pile);
 	else
-		recursive_quicksort(e, len - pushed, pile, turn + 1);
-	tmp = pushed;
-	if (turn < 5)
-		return ;
-	while (tmp--)
-		pile == 'a' ? pa(e) : pb(e);
+	{
+		if ((new = (t_move*)ft_memalloc(sizeof(t_move))) == NULL)
+			return /* free properly please */;
+		new->next = *begin;
+		*begin = new;
+	}
+}
+
+void	quicksort(t_env *e)
+{
+	t_move	*move;
+	int		pivot;
+	char	stack_id;
+
+	move = NULL;
+	while (e->a_len)
+	{
+		new_move_link(&move);
+		stack_id = 'a';
+		pivot = median(e, e->a_len, stack_id);
+		mover(e, move, e->a_len, pivot, stack_id);
+	}
 }
