@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/03 18:44:36 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/04 16:10:32 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,19 @@ int		median(t_env *e, int len, char stack_id)
 void	quicksort(t_env *e, int len, char stack_id)
 {
 	int pivot;
+	int loop;
 
-
-	pivot = median(e, len , stack_id);
-
+	(void)len;
+	while (e->a_len > 3)
+	{
+		pivot = median(e, e->a_len, stack_id);
+		loop = e->a_len;
+		while (loop--)
+		{
+			if (e->a[0] < pivot)
+				pb(e);
+			else
+				ra(e);
+		}
+	}
 }

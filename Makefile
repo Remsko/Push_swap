@@ -19,6 +19,8 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/operations/reverse.c \
 			srcs/push_swap/issorted.c \
 			srcs/push_swap/quicksort.c \
+			srcs/push_swap/littlesort.c \
+			srcs/push_swap/selectionsort.c \
 
 SRC_1 = srcs/checker/main.c \
 

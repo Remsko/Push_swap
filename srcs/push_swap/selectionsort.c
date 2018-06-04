@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   selectionsort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/04 16:36:41 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/06/04 16:37:57 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-int     main(int argc, char **argv)
+void    selectionsort(t_env *e)
 {
-    t_env   e;
-
-    if (argc > 1)
-    {
-        e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
-                    .b_len = 0, .print = TRUE, .lst = NULL, .a = NULL, .b = NULL};
-        parse_params(&e);
-        quicksort(&e, e.elem_nb, 'a');
-        littlesort(&e);
-        selectionsort(&e);
-    }
-    else
-        ft_putendl("usage: ./push_swap + integer argument(s)");
-    return (0);
+    (void)e;
 }

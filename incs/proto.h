@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/03 18:43:43 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/04 16:38:07 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ t_bool	issorted(t_env *e);
 void	quicksort(t_env *e, int len, char stack_id);
 
 void	instant_sort(t_env *e, int len);
+
+void    littlesort(t_env *e);
+
+void    selectionsort(t_env *e);
 
 #endif
