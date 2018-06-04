@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/04 16:10:32 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/04 17:02:27 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ int		median(t_env *e, int len, char stack_id)
 	return ((min + max) / 2 + (index % 2 != 0));
 }
 
-void	quicksort(t_env *e, int len, char stack_id)
+void	quicksort(t_env *e)
 {
 	int pivot;
 	int loop;
 
-	(void)len;
 	while (e->a_len > 3)
 	{
-		pivot = median(e, e->a_len, stack_id);
+		pivot = median(e, e->a_len, 'a');
 		loop = e->a_len;
 		while (loop--)
 		{
