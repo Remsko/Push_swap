@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/04 17:01:51 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/06 14:47:01 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int     main(int argc, char **argv)
         parse_params(&e);
         quicksort(&e);
         littlesort(&e);
-        selectionsort(&e);
+        insertionsort(&e, 0);
         free(e.a);
         free(e.b);
     }

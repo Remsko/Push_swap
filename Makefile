@@ -20,7 +20,7 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/push_swap/issorted.c \
 			srcs/push_swap/quicksort.c \
 			srcs/push_swap/littlesort.c \
-			srcs/push_swap/selectionsort.c \
+			srcs/push_swap/insertionsort.c \
 
 SRC_1 = srcs/checker/main.c \
 
