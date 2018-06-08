@@ -6,26 +6,11 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 15:48:59 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 17:32:05 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
-
-int     get_nb_index(int *stack, int len, int nb)
-{
-    int index;
-
-    index = 0;
-    while (index < len)
-    {
-        if (stack[index] == nb)
-            break ;
-        else
-            ++index;
-    }
-    return (index);
-}
 
 t_stack_nb  get_closest_upper(t_env *e, t_stack_nb *actual)
 {
@@ -79,8 +64,8 @@ int     move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool do_op)
     int     op;
 
     op = 0;
-    int middle_a = e->a_len / 2;
-    int middle_b = e->b_len / 2;
+    int middle_a = e->a_len / 2;// + e->b_len % 2 != 0;
+    int middle_b = e->b_len / 2;// + e->b_len % 2 != 0;
 
     int rotate_a;
     int rotate_b;
@@ -92,15 +77,15 @@ int     move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool do_op)
         rotate_b = actual->index; 
     else
     {
-        rotate_b = e->b_len + (e->b_len % 2 != 0) - actual->index;
-        reverse_b = FALSE;
+        rotate_b = e->b_len - actual->index; //+ e->b_len % 2;
+        reverse_b = TRUE;
     }
     if (next->index < middle_a)
         rotate_a = next->index;
     else
     {
-        rotate_a = e->a_len + (e->a_len % 2 != 0) - next->index;
-        reverse_a = FALSE;
+        rotate_a = e->a_len - next->index; // + e->b_len % 2;
+        reverse_a = TRUE;
     }
     if (do_op == TRUE)
     {
@@ -135,12 +120,12 @@ void    pile_finalrotate(t_env *e)
     index = 0;
     while (e->a[index] != 1)
         ++index;
-    if (index > e->elem_nb / 2)
-        rotate = e->elem_nb + (e->elem_nb % 2 != 0) - index;
+    if (index < e->elem_nb / 2)
+        rotate = index;
     else
     {
         reverse = TRUE;
-        rotate = index;
+        rotate = e->elem_nb - index;
     }
     while (rotate--)
         reverse == TRUE ? rra(e) : ra(e);
@@ -159,10 +144,13 @@ void    insertionsort(t_env *e, int turn)
     index = 0;
     op_nb = 0x7FFFFFFF;
     /* debug stop */
-    //if (turn == 5)
+    //if (turn == 10)
     //    return ;
     if (e->b_len == 0)
-        return /*pile_rotate(e)*/;
+    {
+        pile_finalrotate(e);
+        return ;
+    }
     /* calculate move cost per elements */
     while (index < e->b_len)
     {
