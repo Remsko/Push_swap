@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:25:32 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 18:49:53 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 19:16:15 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_duplicate(t_env *e)
 		j = 0;
 		while (j < e->elem_nb)
 		{
-			if (j != i && e->b[i] == e->b[j]) 
+			if (j != i && e->b[i] == e->b[j])
 			{
 				free(e->a);
 				free(e->b);

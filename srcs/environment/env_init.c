@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   issorted.c                                         :+:      :+:    :+:   */
+/*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/13 12:20:46 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/13 12:21:00 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/06/08 17:52:26 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/06/08 19:26:01 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-t_bool	issorted(t_env *e)
+void	env_init(t_env *e, t_bool print)
 {
-	int		i;
-	t_bool	answer;
-
-	i = 0;
-	answer = 1 - (e->b_len > 0);
-	while (i + 1 < e->elem_nb)
-	{
-		if (e->a[i] > e->a[i + 1])
-		{
-			answer = FALSE;
-			break ;
-		}
-		else
-			++i;
-	}
-	if (answer == TRUE)
-	{
-		free(e->a);
-		free(e->b);
-		return (TRUE);
-	}
-	else
-		return (FALSE);
+	e->lst = NULL;
+	e->a = NULL;
+	e->b = NULL;
+	e->elem_nb = 0;
+	e->op_nb = 0;
+	e->a_len = 0;
+	e->b_len = 0;
+	e->print = print;
+	e->visual = FALSE;
 }

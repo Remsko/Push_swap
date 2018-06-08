@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:48:11 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 18:55:21 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 19:18:30 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static t_bool	ft_isstrdigit(char *p, size_t len)
 
 static t_bool	number_checker(char *nb)
 {
-	size_t  len;
-	int     diff;
-	t_bool  neg;
+	size_t	len;
+	int		diff;
+	t_bool	neg;
 
 	neg = (nb[0] == '-');
 	if (neg && ft_isdigit((int)nb[1]) == 0)
@@ -55,8 +55,8 @@ void			check_numbers(t_env *e)
 		{
 			if (number_checker(*split++) == FALSE)
 			{
-                ft_lstdel(&e->lst, &ft_deltab);
-                ft_error(3);
+				ft_lstdel(&e->lst, &ft_deltab);
+				ft_error(3);
 			}
 		}
 		tmp = tmp->next;

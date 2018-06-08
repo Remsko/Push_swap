@@ -6,25 +6,24 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/04 17:02:27 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 19:43:42 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-int		median(t_env *e, int len, char stack_id)
+static int	median(t_env *e, int len, char stack_id)
 {
 	int		*stack;
 	long	min;
 	int		max;
 	int		index;
 
-
 	stack = stack_id == 'a' ? e->a : e->b;
 	min = (long)2147483648;
 	max = 0;
 	index = 0;
-	while (index < len) 
+	while (index < len)
 	{
 		if (stack[index] < min)
 			min = stack[index];
@@ -35,7 +34,7 @@ int		median(t_env *e, int len, char stack_id)
 	return ((min + max) / 2 + (index % 2 != 0));
 }
 
-void	quicksort(t_env *e)
+void		quicksort(t_env *e)
 {
 	int pivot;
 	int loop;

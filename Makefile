@@ -17,11 +17,10 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/operations/push.c \
 			srcs/operations/rotate.c \
 			srcs/operations/reverse.c \
-			srcs/push_swap/issorted.c \
 			srcs/push_swap/quicksort.c \
 			srcs/push_swap/littlesort.c \
 			srcs/push_swap/insertionsort.c \
-			srcs/env_init.c \
+			srcs/environment/env_init.c \
 
 SRC_1 = srcs/checker/main.c \
 

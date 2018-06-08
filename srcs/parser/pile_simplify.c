@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 18:19:35 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 18:49:43 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 19:17:06 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	next_min(t_env *e, long *previous, int nb)
 
 void		pile_simplify(t_env *e)
 {
-	long previous;
-	int i;
+	long	previous;
+	int		i;
 
 	previous = (long)-2147483649;
 	i = 0;
