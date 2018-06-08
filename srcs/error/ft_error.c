@@ -6,14 +6,14 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:31:40 by remsko            #+#    #+#             */
-/*   Updated: 2018/06/08 18:59:37 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 19:21:54 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-void    ft_error(int nb)
+void	ft_error(int nb)
 {
-    ft_putendl("Error");
-    exit(nb);
+	ft_putendl("Error");
+	exit(nb);
 }
