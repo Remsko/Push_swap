@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 12:52:13 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/10 18:19:11 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 18:55:38 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static void fill_lst(t_env *e, char **split)
     e->elem_nb += e->lst->content_size - 1;
 }
 
-void        stock_numbers(t_env *e)
+void        stock_numbers(t_env *e, char **argv)
 {
     char    **split;
     t_list  *new;
 
-    while (*(++e->argv) != NULL)
+    while (*(++argv) != NULL)
     {
-        split = ft_strsplit(*(e->argv), ' ');
+        split = ft_strsplit(*(argv), ' ');
         if (e->elem_nb == 0)
         {
             if (!(e->lst = (t_list*)malloc(sizeof(t_list))))

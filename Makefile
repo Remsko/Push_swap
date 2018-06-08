@@ -21,6 +21,7 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/push_swap/quicksort.c \
 			srcs/push_swap/littlesort.c \
 			srcs/push_swap/insertionsort.c \
+			srcs/env_init.c \
 
 SRC_1 = srcs/checker/main.c \
 

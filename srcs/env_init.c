@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_params.c                                     :+:      :+:    :+:   */
+/*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 18:14:45 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 18:51:07 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/06/08 17:52:26 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/06/08 19:00:51 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#include "../incs/push_swap.h"
 
-void    parse_params(t_env *e, char **argv)
+void	env_init(t_env *e, t_bool print)
 {
-    stock_numbers(e, argv);
-    check_numbers(e);
-    create_piles(e);
-    check_duplicate(e);
-    pile_simplify(e);
+	e->lst = NULL;
+	e->a = NULL;
+	e->b = NULL;
+	e->elem_nb = 0;
+	e->op_nb = 0;
+	e->a_len = 0;
+	e->b_len = 0;
+	e->print = print;
+	e->visual = FALSE;
 }

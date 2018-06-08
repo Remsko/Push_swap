@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:48:11 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/05/13 18:25:29 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 18:55:21 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ static t_bool	number_checker(char *nb)
 void			check_numbers(t_env *e)
 {
 	char	**split;
-	t_list	*lst;
+	t_list	*tmp;
 
-	lst = e->lst;
-	while (lst)
+	tmp = e->lst;
+	while (tmp)
 	{
-		split = (char**)lst->content;
+		split = (char**)tmp->content;
 		while (*split)
 		{
 			if (number_checker(*split++) == FALSE)
@@ -59,6 +59,6 @@ void			check_numbers(t_env *e)
                 ft_error(3);
 			}
 		}
-		lst = lst->next;
+		tmp = tmp->next;
 	}
 }

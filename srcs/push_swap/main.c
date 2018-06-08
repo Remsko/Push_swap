@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 17:40:56 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 19:00:09 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int     main(int argc, char **argv)
 
     if (argc > 1)
     {
-        e = (t_env){.argc = argc, .argv = argv, .elem_nb = 0, .a_len = 0,
-                    .b_len = 0, .print = TRUE, .lst = NULL, .a = NULL, .b = NULL};
-        parse_params(&e);
+		env_init(&e, 1);
+		parse_params(&e, argv);
         quicksort(&e);
         littlesort(&e);
         insertionsort(&e);
