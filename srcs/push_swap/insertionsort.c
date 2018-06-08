@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 17:32:05 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 17:41:48 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void    pile_finalrotate(t_env *e)
         reverse == TRUE ? rra(e) : ra(e);
 }
 
-void    insertionsort(t_env *e, int turn)
+void    insertionsort(t_env *e)
 {
     t_stack_nb final;
     t_stack_nb actual;
@@ -143,18 +143,13 @@ void    insertionsort(t_env *e, int turn)
     tmp = 0;
     index = 0;
     op_nb = 0x7FFFFFFF;
-    /* debug stop */
-    //if (turn == 10)
-    //    return ;
     if (e->b_len == 0)
     {
         pile_finalrotate(e);
         return ;
     }
-    /* calculate move cost per elements */
     while (index < e->b_len)
     {
-        /* get the chipest nb at the pointed index */
         actual = (t_stack_nb){e->b[index], index};
         next = get_closest_upper(e, &actual);
         if ((tmp = move_cost(e, &actual, &next)) < op_nb)
@@ -164,14 +159,7 @@ void    insertionsort(t_env *e, int turn)
         }
         ++index;
     }
-    //printf("nb %d \t index %d\n", nb, index);
     t_stack_nb final_next = get_closest_upper(e, &final);
-    /* do the moves for the index */
-    //printf("nb = %d \t index = %d\n", final.nb, final.index);
-    //printf("nb = %d \t index = %d\n", final_next.nb, final_next.index);
-    //for(int i = 0; i < e->elem_nb; i++)
-    //    printf("%d \t %d\n", e->a[i], e->b[i]);
     move_for(e, &final, &final_next, TRUE);
-    /* repeat until b is not empty */
-    insertionsort(e, turn + 1);
+    insertionsort(e);
 }

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/06 11:20:59 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 17:41:04 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	quicksort(t_env *e);
 
 void    littlesort(t_env *e);
 
-void    insertionsort(t_env *e, int turn);
+void    insertionsort(t_env *e);
 
 #endif
