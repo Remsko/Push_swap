@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/03 16:13:34 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/08 11:48:20 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef struct  s_env
     t_bool  print;
     t_bool  visual;
 }               t_env;
+
+typedef struct  s_stack_nb
+{
+    int nb;
+    int index;
+}               t_stack_nb;
 
 typedef struct  s_move
 {
