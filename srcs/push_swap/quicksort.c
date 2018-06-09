@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 19:43:42 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/09 17:25:58 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void		quicksort(t_env *e)
 		loop = e->a_len;
 		while (loop--)
 		{
-			if (e->a[0] < pivot)
+			if (e->a_len == 3)
+				return ;
+			else if (e->a[0] < pivot)
 				pb(e);
 			else
 				ra(e);

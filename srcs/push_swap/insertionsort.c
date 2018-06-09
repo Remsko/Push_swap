@@ -6,160 +6,118 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 17:41:48 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/09 18:19:02 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
+#include	<stdio.h>
 
-t_stack_nb  get_closest_upper(t_env *e, t_stack_nb *actual)
+t_stack_nb	get_closest_upper(t_env *e, t_stack_nb *actual)
 {
-    t_stack_nb  next;
-    int         index;
+	t_stack_nb	next;
+	int			index;
 
-    index = 0;
-    next.index = 0;
-    next.nb = 0x7FFFFFFF;
-    while (index < e->a_len)
-    {
-        if (e->a[index] > actual->nb && e->a[index] < next.nb)
-        {
-            next.index = index;
-            next.nb = e->a[index];
-        }
-        else
-            ++index;
-    }
-    return (next);
+	index = 0;
+	next.index = 0;
+	next.nb = 0x7FFFFFFF;
+	while (index < e->a_len)
+	{
+		if (e->a[index] > actual->nb && e->a[index] < next.nb)
+		{
+			next.index = index;
+			next.nb = e->a[index];
+		}
+		else
+			++index;
+	}
+	return (next);
 }
 
-void    rotate_until(t_env *e, int until, t_bool reverse, char stack_id)
+void		get_rotation(int *rot, t_bool *rot_rev, int index, int len)
 {
-    while (until)
-    {
-        if (reverse == TRUE)
-        {
-            if (stack_id == 'a')
-                rra(e);
-            else if (stack_id == 'b')
-                rrb(e);
-            else
-                rrr(e);
-        }
-        else
-        {
-            if (stack_id == 'a')
-                ra(e);
-            else if (stack_id == 'b')
-                rb(e);
-            else
-                rr(e);
-        }
-        --until;
-    }
+	if (index < len / 2)
+		*rot = index;
+	else
+	{
+		*rot = len - index;
+		*rot_rev = TRUE;
+	}
 }
 
-int     move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool do_op)
+void		get_both_rotation(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_rotation *rot)
 {
-    int     op;
-
-    op = 0;
-    int middle_a = e->a_len / 2;// + e->b_len % 2 != 0;
-    int middle_b = e->b_len / 2;// + e->b_len % 2 != 0;
-
-    int rotate_a;
-    int rotate_b;
-
-    t_bool reverse_a = FALSE;
-    t_bool reverse_b = FALSE;
-
-    if (actual->index < middle_b)
-        rotate_b = actual->index; 
-    else
-    {
-        rotate_b = e->b_len - actual->index; //+ e->b_len % 2;
-        reverse_b = TRUE;
-    }
-    if (next->index < middle_a)
-        rotate_a = next->index;
-    else
-    {
-        rotate_a = e->a_len - next->index; // + e->b_len % 2;
-        reverse_a = TRUE;
-    }
-    if (do_op == TRUE)
-    {
-        rotate_until(e, rotate_a, reverse_a, 'a');
-        rotate_until(e, rotate_b, reverse_b, 'b');
-        pa(e);
-    }
-    else
-    {
-        op += rotate_a;
-        op += rotate_b;
-        ++op;
-    }
-    return (op);
+	(void)e;
+	(void)actual;
+	(void)next;
+	if (rot->rev_a == rot->rev_b)
+	{
+		if (rot->a < rot->b)
+			rot->both = rot->a;
+		else
+			rot->both = rot->b;
+		rot->a -= rot->both;
+		rot->b -= rot->both;
+		rot->rev_both = rot->rev_a;
+	}
+	else
+	{
+		return /* big algo too switch b or a to both and change b if a or a if b in case it's worth*/;
+	}
 }
 
-int     move_cost(t_env *e, t_stack_nb *actual, t_stack_nb *next)
+int			move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool do_op)
 {
-    int op_nb;
+	t_rotation	*rot;
+	int			op;
 
-    op_nb = move_for(e, actual, next, FALSE);
-    return (op_nb);
+	op = 0;
+	rot = (t_rotation[1]){{0, 0, 0, FALSE, FALSE, FALSE}};
+	get_rotation(&rot->b, &rot->rev_b, actual->index, e->b_len);
+	get_rotation(&rot->a, &rot->rev_a, next->index, e->a_len);
+	get_both_rotation(e, actual, next, rot);
+	if (do_op == TRUE)
+	{
+		n_rotate(e, rot->a, rot->rev_a, 'a');
+		n_rotate(e, rot->b, rot->rev_b, 'b');
+		n_rotate(e, rot->both, rot->rev_both, '2');
+		pa(e);
+	}
+	else
+	{
+		op += rot->a;
+		op += rot->b;
+		op += rot->both;
+		++op;
+	}
+	return (op);
 }
 
-void    pile_finalrotate(t_env *e)
+void		insertionsort(t_env *e, int turn)
 {
-    int     index;
-    int     rotate;
-    t_bool  reverse;
+	t_stack_nb	actual[2];
+	t_stack_nb	final[2];
+	int			index;
+	int			op_nb;
+	int			op_tmp;
 
-    reverse = FALSE;
-    index = 0;
-    while (e->a[index] != 1)
-        ++index;
-    if (index < e->elem_nb / 2)
-        rotate = index;
-    else
-    {
-        reverse = TRUE;
-        rotate = e->elem_nb - index;
-    }
-    while (rotate--)
-        reverse == TRUE ? rra(e) : ra(e);
-}
-
-void    insertionsort(t_env *e)
-{
-    t_stack_nb final;
-    t_stack_nb actual;
-    t_stack_nb next;
-    int index;
-    int op_nb;
-    int tmp;
-
-    tmp = 0;
-    index = 0;
-    op_nb = 0x7FFFFFFF;
-    if (e->b_len == 0)
-    {
-        pile_finalrotate(e);
-        return ;
-    }
-    while (index < e->b_len)
-    {
-        actual = (t_stack_nb){e->b[index], index};
-        next = get_closest_upper(e, &actual);
-        if ((tmp = move_cost(e, &actual, &next)) < op_nb)
-        {
-            op_nb = tmp;
-            final = actual;
-        }
-        ++index;
-    }
-    t_stack_nb final_next = get_closest_upper(e, &final);
-    move_for(e, &final, &final_next, TRUE);
-    insertionsort(e);
+	index = 0;
+	op_tmp = 0;
+	op_nb = 0x7FFFFFFF;
+	if (e->b_len == 0)
+		return (final_rotate(e));
+	while (index < e->b_len)
+	{
+		actual[0] = (t_stack_nb){e->b[index], index};
+		actual[1] = get_closest_upper(e, &actual[0]);
+		if ((op_tmp = move_for(e, &actual[0], &actual[1], FALSE)) < op_nb)
+		{
+			op_nb = op_tmp;
+			final[0] = actual[0];
+		}
+		++index;
+	}
+	final[1] = get_closest_upper(e, &final[0]);
+	move_for(e, &final[0], &final[1], TRUE);
+	insertionsort(e, turn + 1);
 }
