@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 15:25:39 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/09 17:25:58 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/11 11:26:00 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,19 @@ void		quicksort(t_env *e)
 	while (e->a_len > 3)
 	{
 		pivot = median(e, e->a_len, 'a');
+		if (e->elem_nb == 5)
+			pivot *= 0.8;
 		loop = e->a_len;
 		while (loop--)
 		{
 			if (e->a_len == 3)
-				return ;
+				break ;
 			else if (e->a[0] < pivot)
 				pb(e);
 			else
 				ra(e);
 		}
 	}
+	if (e->b_len == 2 && e->b[0] < e->b[1])
+		sb(e);
 }

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:52:26 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 19:26:01 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/11 14:39:05 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	env_init(t_env *e, t_bool print)
 	e->b_len = 0;
 	e->print = print;
 	e->visual = FALSE;
+	e->number = FALSE;
 }

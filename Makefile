@@ -9,6 +9,7 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/parser/stock_numbers.c \
 			srcs/parser/create_piles.c \
 			srcs/parser/pile_simplify.c \
+			srcs/parser/parse_bonus.c \
 			srcs/error/ft_error.c \
 			srcs/checker/operation_getter.c \
 			srcs/checker/do_operation.c \
@@ -22,6 +23,7 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/push_swap/littlesort.c \
 			srcs/push_swap/insertionsort.c \
 			srcs/environment/env_init.c \
+			srcs/visualizer/init_sdl.c \
 
 SRC_1 = srcs/checker/main.c \
 
@@ -31,12 +33,13 @@ OBJ_ALL = $(SRC_ALL:.c=.o)
 OBJ_1 = $(SRC_1:.c=.o)
 OBJ_2 = $(SRC_2:.c=.o)
 
-LDLIBS = -Llibft
+LDLIBS = -Llibft -L/Users/rpinoit/.brew/lib
 
-LDFLAGS = -lft
+LDFLAGS = -lft -lSDL2
 
 CPPFLAGS = -I./incs \
 			-I./libft \
+			-I/Users/rpinoit/.brew/include/SDL2
 
 all: $(NAME)
 

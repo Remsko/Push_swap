@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:28:46 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 19:39:07 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/11 18:12:53 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_verifier(t_env *e)
 
 	i = 0;
 	answer = TRUE;
-	if (e->b_len > 0)
+	if (e->b_len != 0)
 		answer = FALSE;
 	while (i + 1 < e->elem_nb)
 	{

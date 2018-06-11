@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 18:13:53 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/08 19:31:16 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/11 15:18:35 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void	create_piles(t_env *e);
 void	check_duplicate(t_env *e);
 
 void	pile_simplify(t_env *e);
+
+void    parse_bonus(t_env *e);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/09 18:19:02 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/11 14:26:32 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ void		get_both_rotation(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_rotati
 	}
 	else
 	{
-		return /* big algo too switch b or a to both and change b if a or a if b in case it's worth*/;
+		return ;
+		/* big algo too switch b or a to both and change b if a or a if b in case it's worth*/
+		/* case move b and a by rot->b and place a after */
+
+		/* case move a and b by rot->a and place b after */
+
+		/* compare all cases and set the worth cases into rot */
 	}
 }
 
