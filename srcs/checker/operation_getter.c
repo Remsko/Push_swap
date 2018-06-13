@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:33:45 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 16:04:34 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 17:04:01 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void operation_getter(t_env *e, t_visual *v)
 			if (e->visual)
 			{
 				sdl_event(v, FALSE);
-				//drawer(e, v);
+				draw_visu(e, v);
 			}
 			++e->op_nb;
 		}
