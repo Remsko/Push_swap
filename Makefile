@@ -25,6 +25,7 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/environment/env_init.c \
 			srcs/visualizer/sdl_init.c \
 			srcs/visualizer/sdl_event.c \
+			srcs/visualizer/sdl_destroy.c \
 			srcs/visualizer/draw_visu.c \
 
 SRC_1 = srcs/checker/main.c \

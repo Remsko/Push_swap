@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:33:45 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 17:04:01 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 17:18:54 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ void operation_getter(t_env *e, t_visual *v)
 		{
 			cleaner(e, line);
 			if (e->visual)
-			{
-				SDL_DestroyWindow(v->window);
-				SDL_Quit();
-			}
+				sdl_destroy(v);
 			ft_error(8);
 		}
 		else
