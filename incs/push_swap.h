@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 15:47:31 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 16:16:38 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "proto.h"
 # include "operations.h"
 # include "parser.h"
+
+#define WIN_W 1500
+#define WIN_H 900
 
 void			sdl_init(t_visual *v);
 void            draw_visu(t_env *e, t_visual *v);
