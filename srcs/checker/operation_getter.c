@@ -6,20 +6,22 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:33:45 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 17:18:54 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 18:10:57 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-static void cleaner(t_env *e, char *line)
+static void	cleaner(t_env *e, t_visual *v, char *line)
 {
 	free(e->a);
 	free(e->b);
 	free(line);
+	if (e->visual)
+		sdl_destroy(v);
 }
 
-void operation_getter(t_env *e, t_visual *v)
+void		operation_getter(t_env *e, t_visual *v)
 {
 	char *line;
 
@@ -30,9 +32,7 @@ void operation_getter(t_env *e, t_visual *v)
 	{
 		if (do_operation(e, line) == FALSE)
 		{
-			cleaner(e, line);
-			if (e->visual)
-				sdl_destroy(v);
+			cleaner(e, v, line);
 			ft_error(8);
 		}
 		else

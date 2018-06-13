@@ -6,12 +6,11 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/11 14:26:32 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 18:21:11 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
-#include	<stdio.h>
 
 t_stack_nb	get_closest_upper(t_env *e, t_stack_nb *actual)
 {
@@ -45,7 +44,8 @@ void		get_rotation(int *rot, t_bool *rot_rev, int index, int len)
 	}
 }
 
-void		get_both_rotation(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_rotation *rot)
+void		get_both_rotation(t_env *e, t_stack_nb *actual,
+		t_stack_nb *next, t_rotation *rot)
 {
 	(void)e;
 	(void)actual;
@@ -63,16 +63,10 @@ void		get_both_rotation(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_rotati
 	else
 	{
 		return ;
-		/* big algo too switch b or a to both and change b if a or a if b in case it's worth*/
-		/* case move b and a by rot->b and place a after */
-
-		/* case move a and b by rot->a and place b after */
-
-		/* compare all cases and set the worth cases into rot */
 	}
 }
 
-int			move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool do_op)
+int			move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool m)
 {
 	t_rotation	*rot;
 	int			op;
@@ -82,7 +76,7 @@ int			move_for(t_env *e, t_stack_nb *actual, t_stack_nb *next, t_bool do_op)
 	get_rotation(&rot->b, &rot->rev_b, actual->index, e->b_len);
 	get_rotation(&rot->a, &rot->rev_a, next->index, e->a_len);
 	get_both_rotation(e, actual, next, rot);
-	if (do_op == TRUE)
+	if (m == TRUE)
 	{
 		n_rotate(e, rot->a, rot->rev_a, 'a');
 		n_rotate(e, rot->b, rot->rev_b, 'b');
