@@ -23,7 +23,9 @@ SRC_ALL =	srcs/parser/parse_params.c \
 			srcs/push_swap/littlesort.c \
 			srcs/push_swap/insertionsort.c \
 			srcs/environment/env_init.c \
-			srcs/visualizer/init_sdl.c \
+			srcs/visualizer/sdl_init.c \
+			srcs/visualizer/sdl_event.c \
+			srcs/visualizer/draw_visu.c \
 
 SRC_1 = srcs/checker/main.c \
 

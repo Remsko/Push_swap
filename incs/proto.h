@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/11 15:17:37 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 11:23:03 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_error(int nb);
 
 void	env_init(t_env *e, t_bool print);
 
-void	operation_getter(t_env *e);
+void	operation_getter(t_env *e, t_visual *v);
 
 t_bool	do_operation(t_env *e, char *line);
 

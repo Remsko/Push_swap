@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_sdl.c                                         :+:      :+:    :+:   */
+/*   sdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 16:07:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/11 16:19:05 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 15:21:08 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
 
-static void		init(void)
+static void init(void)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
@@ -21,7 +21,7 @@ static void		init(void)
     }
 }
 
-static void		window(t_visual *v)
+static void window(t_visual *v)
 {
     if ((v->window = SDL_CreateWindow(
             "TEST SDL RPINOIT FENETRE",
@@ -29,8 +29,7 @@ static void		window(t_visual *v)
             SDL_WINDOWPOS_UNDEFINED,
             1500,
             900,
-            0
-            )) == NULL)
+            0)) == NULL)
     {
         ft_putstr("Could not create window: ");
         ft_putendl(SDL_GetError());
@@ -38,9 +37,10 @@ static void		window(t_visual *v)
     }
 }
 
-static void		image(t_visual *v)
+static void image(t_visual *v)
 {
-	if ((v->renderer = SDL_CreateRenderer(v->window, -1, SDL_RENDERER_SOFTWARE)) == NULL)
+    if ((v->renderer = SDL_CreateRenderer(v->window, -1,
+            SDL_RENDERER_SOFTWARE)) == NULL)
     {
         ft_putstr("Could not create renderer: ");
         ft_putendl(SDL_GetError());
@@ -48,9 +48,22 @@ static void		image(t_visual *v)
     }
 }
 
-void			init_sdl(t_visual *v)
+static void texture(t_visual *v)
 {
-	init();
-	window(v);
-	image(v);
+    if ((v->texture = SDL_CreateTexture(v->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1500, 900)) == NULL)
+    {
+        ft_putstr("Could not create texture: ");
+        ft_putendl(SDL_GetError());
+        exit(-4);
+    }
+}
+
+void sdl_init(t_visual *v)
+{
+    //SDL_Rect r;
+
+    init();
+    window(v);
+    image(v);
+    texture(v);
 }

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:50:22 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/11 15:51:20 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/13 12:06:51 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ typedef struct		s_visual
 {
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
+    SDL_Texture		*texture;
+	SDL_Event		event;
 }					t_visual;
 
 typedef struct	s_env
