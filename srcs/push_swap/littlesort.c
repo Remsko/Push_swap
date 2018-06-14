@@ -6,26 +6,11 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:15:13 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 15:17:29 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/14 14:58:48 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
-
-static t_bool	a_sorted(t_env *e)
-{
-	int i;
-
-	i = 0;
-	while (i < e->a_len - 1)
-	{
-		if (e->a[i] < e->a[i + 1])
-			++i;
-		else
-			return (FALSE);
-	}
-	return (TRUE);
-}
 
 void			littlesort(t_env *e)
 {

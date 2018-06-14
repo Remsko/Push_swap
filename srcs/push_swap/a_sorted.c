@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   a_sorted.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 18:13:53 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/14 11:04:27 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/06/14 14:59:43 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/06/14 14:59:56 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "../../incs/push_swap.h"
 
-# include "push_swap.h"
+t_bool	a_sorted(t_env *e)
+{
+	int i;
 
-void	parse_params(t_env *e, char **argv);
-
-void	stock_numbers(t_env *e, char **argv);
-
-void	check_numbers(t_env *e);
-
-void	create_piles(t_env *e);
-
-void	check_duplicate(t_env *e);
-
-void	pile_simplify(t_env *e);
-
-void	parse_bonus(t_env *e);
-
-#endif
+	i = 0;
+	while (i < e->a_len - 1)
+	{
+		if (e->a[i] < e->a[i + 1])
+			++i;
+		else
+			return (FALSE);
+	}
+	return (TRUE);
+}

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 13:59:35 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 18:12:47 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:59:38 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	parse_bonus(t_env *e)
 		if (**(e->argv) == '-')
 			boolean_init(e, *(e->argv));
 		else
-			return ;
+			break ;
 	}
+	if (*e->argv == NULL && (e->visual || e->number))
+		ft_error(1000);
 }

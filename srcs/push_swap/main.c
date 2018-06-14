@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 09:44:17 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 15:18:21 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/06/14 14:58:32 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			main(int argc, char **argv)
 	{
 		env_init(&e, 1);
 		parse_params(&e, argv);
-		if (e.a_len > 1)
+		if (e.a_len > 1 && a_sorted(&e) == FALSE)
 		{
 			quicksort(&e);
 			littlesort(&e);
