@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 16:37:19 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/13 18:21:11 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/07/19 10:31:37 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,13 @@ void		insertionsort(t_env *e, int turn)
 	{
 		actual[0] = (t_stack_nb){e->b[index], index};
 		actual[1] = get_closest_upper(e, &actual[0]);
-		if ((op_tmp = move_for(e, &actual[0], &actual[1], FALSE)) < op_nb)
+		if ((op_tmp = move_for(e, &actual[0], &actual[1], FALSE)) <= op_nb)
 		{
-			op_nb = op_tmp;
-			final[0] = actual[0];
+			if (op_tmp < op_nb || (op_tmp == op_nb && actual[0].nb > final[0].nb))
+			{
+				op_nb = op_tmp;
+				final[0] = actual[0];
+			}
 		}
 		++index;
 	}

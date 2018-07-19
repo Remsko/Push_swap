@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 15:32:00 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/06/19 14:44:01 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/07/13 13:28:01 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,8 @@ static void		draw_b(t_env *e, t_visual *v)
 
 void			draw_visu(t_env *e, t_visual *v)
 {
-	//SDL_SetRenderTarget(v->renderer, v->texture);
 	draw_background(v);
 	draw_a(e, v);
 	draw_b(e, v);
-	//SDL_SetRenderTarget(v->renderer, NULL);
-	//SDL_RenderCopy(v->renderer, v->texture, NULL, NULL);
 	SDL_RenderPresent(v->renderer);
 }
